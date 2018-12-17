@@ -3,13 +3,13 @@ package jUnitTest;
 import java.util.concurrent.TimeUnit;
 import pageObject.*;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class jUnitTests {
 	private RemoteWebDriver wd;
-	private String url;
 	private RadioButtonsDemo rbp;
 	private String path="C:\\Users\\Danny\\eclipse-workspace\\SeleniumEasyTests\\files\\chromedriver.exe";
 	
@@ -24,6 +24,12 @@ public class jUnitTests {
 	@Test
 	public void maleTest() throws Exception {
 		rbp = new RadioButtonsDemo(wd);
+		rbp.openViaUrl(RadioButtonsDemo.getUrl());
+		rbp.initializeElements(wd);
+		rbp.maleRBClick();
+		rbp.checkButtonClick();
+		
+		Assert.assertEquals("Radio button 'Male' is checked",rbp.getResultMessage().getText());
 	}
 	
 	@After
