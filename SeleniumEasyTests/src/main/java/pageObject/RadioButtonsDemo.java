@@ -5,59 +5,96 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class RadioButtonsDemo extends BasePage {
-	private static String url="https://www.seleniumeasy.com/test/basic-radiobutton-demo.html";
-	protected RemoteWebDriver wb;
+	//final static do innej klasy finalnej np. SeleniumSettings
+	//wydzielenie adresu url, dodawac tylko sufiks
+	private final static String Url = "https://www.seleniumeasy.com/test/basic-radiobutton-demo.html";
+	//wywolanie klasy np. SeleniumSettings.MAIN_URL, tutaj akurat dla radio buttons demo
+	protected RemoteWebDriver webDriver;
 	
-	public RadioButtonsDemo(RemoteWebDriver wb) {
-		super(wb);
+	public RadioButtonsDemo(RemoteWebDriver webDriver) {
+		super(webDriver);
 	}
 	
 	public static String getUrl() {
-		return url;
+		return Url;
 	}
 	
 	//elements for Radio Button Demo section
-	private WebElement maleRB;
-	private WebElement femaleRB;
-	private WebElement checkButton;
-	private WebElement resultMessage;
+	private WebElement maleRadioButton;
+	private WebElement femaleRadioButton;
+	private WebElement checkButtonTier1;
+	private WebElement resultMessageTier1;
 	
 	//elements for Group Radio Buttons Demo section
-	private WebElement maleGRB;
-	private WebElement femaleGRB;
-	private WebElement zeroToFiveGRB;
-	private WebElement fiveToFifeteenGRB;
-	private WebElement fifeteenToFiftyGRB;
+	private WebElement maleGroupRadioButton;
+	private WebElement femaleGroupRadioButton;
+	private WebElement zeroToFiveGroupRadioButton;
+	private WebElement fiveToFifeteenGroupRadioButton;
+	private WebElement fifeteenToFiftyGroupRadioButton;
+	private WebElement checkButtonTier2;
+	private WebElement resultMessageTier2;
 	
 	//methods for Radio Button Demo section
 	public RadioButtonsDemo maleRBClick() {
-		maleRB.click();
+		maleRadioButton.click();
 		return this;
 	}
 	
 	public RadioButtonsDemo femaleRBClick() {
-		femaleRB.click();
+		femaleRadioButton.click();
 		return this;
 	}
 	
-	public RadioButtonsDemo checkButtonClick() {
-		checkButton.click();
+	public RadioButtonsDemo checkButtonTier1Click() {
+		checkButtonTier1.click();
 		return this;
 	}
 	
-	public WebElement getResultMessage() {
-		return resultMessage;
+	public WebElement getResultMessageTier1() {
+		return resultMessageTier1;
 	}
 	
 	//methods for Group Radio Buttons Demo section
-	//
+	public RadioButtonsDemo maleGroupRadioButtonClick() {
+		maleGroupRadioButton.click();
+		return this;
+	}
+	
+	public RadioButtonsDemo femaleGroupRadioButtonClick() {
+		femaleGroupRadioButton.click();
+		return this;
+	}
+	
+	public RadioButtonsDemo zeroToFiveGroupRadioButtonClick() {
+		zeroToFiveGroupRadioButton.click();
+		return this;
+	}
+	
+	public RadioButtonsDemo fiveToFifeteenGroupRadioButtonClick() {
+		fiveToFifeteenGroupRadioButton.click();
+		return this;
+	}
+	
+	public RadioButtonsDemo fifeteenToFiftyGroupRadioButtonClick() {
+		fifeteenToFiftyGroupRadioButton.click();
+		return this;
+	}
+	
+	public RadioButtonsDemo checkButtonTier2Click() {
+		checkButtonTier2.click();
+		return this;
+	}
+	
+	public WebElement getResultMessageTier2() {
+		return resultMessageTier2;
+	}
 	
 	//initialization of all elements from both sections
-	public RadioButtonsDemo initializeElements(RemoteWebDriver wd) {
-		maleRB = wb.findElement(By.xpath("//*[@id=\"easycont\"]/div/div[2]/div[1]/div[2]/label[1]/input"));
-		femaleRB = wb.findElement(By.xpath("//*[@id=\"easycont\"]/div/div[2]/div[1]/div[2]/label[2]/input"));
-		checkButton = wb.findElement(By.id("buttoncheck"));
-		resultMessage = wb.findElement(By.xpath("//*[@id=\"easycont\"]/div/div[2]/div[1]/div[2]/p[3]"));
+	public RadioButtonsDemo initializeElements(RemoteWebDriver webDriver) {
+		maleRadioButton = webDriver.findElement(By.xpath("//*[@id=\"easycont\"]/div/div[2]/div[1]/div[2]/label[1]/input"));
+		femaleRadioButton = webDriver.findElement(By.xpath("//*[@id=\"easycont\"]/div/div[2]/div[1]/div[2]/label[2]/input"));
+		checkButtonTier1 = webDriver.findElement(By.id("buttoncheck"));
+		resultMessageTier1 = webDriver.findElement(By.xpath("//*[@id=\"easycont\"]/div/div[2]/div[1]/div[2]/p[3]"));
 		return this;
 	}
 }
