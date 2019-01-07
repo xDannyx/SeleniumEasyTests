@@ -10,7 +10,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class RadioButtonsTests {
-	//nazwy zmiennych maja mowic do czego zostaly uzyte
 	private RemoteWebDriver webDriver;
 	private RadioButtonsDemo radioButtonsPage;
 	private String path="C:\\Users\\Danny\\git\\SeleniumEasyTests\\SeleniumEasyTests\\files\\chromedriver.exe";
@@ -50,8 +49,74 @@ public class RadioButtonsTests {
 		Assert.assertEquals("Radio button 'Female' is checked",radioButtonsPage.getResultMessageTier1().getText());
 	}
 	
-	//Tests for Group Radio Buttons Demo section
+    @Test
+    public void nothingCheckedTest() throws Exception {
+    	radioButtonsPage = new RadioButtonsDemo(webDriver);
+    	radioButtonsPage.openViaUrl(RadioButtonsDemo.getUrl());
+    	radioButtonsPage.initializeElements(webDriver);
+    	radioButtonsPage.checkButtonTier1Click();
+
+        Assert.assertEquals("Radio button is Not checked",radioButtonsPage.getResultMessageTier1().getText());
+    }
 	
+	//Tests for Group Radio Buttons Demo section
+    @Test
+    public void maleFifteenToFiftyTest() throws Exception {
+    	radioButtonsPage = new RadioButtonsDemo(webDriver);
+    	radioButtonsPage.openViaUrl(RadioButtonsDemo.getUrl());
+    	radioButtonsPage.initializeElements(webDriver);
+    	radioButtonsPage.maleGroupRadioButtonClick();
+    	radioButtonsPage.fifeteenToFiftyGroupRadioButtonClick();
+    	radioButtonsPage.checkButtonTier2Click();
+
+        Assert.assertEquals("Sex : Male\n" + "Age group: 15 - 50",radioButtonsPage.getResultMessageTier2().getText());
+    }
+
+    @Test
+    public void femaleZeroToFive() throws Exception {
+    	radioButtonsPage = new RadioButtonsDemo(webDriver);
+    	radioButtonsPage.openViaUrl(RadioButtonsDemo.getUrl());
+        radioButtonsPage.initializeElements(webDriver);
+        radioButtonsPage.femaleGroupRadioButtonClick();
+        radioButtonsPage.zeroToFiveGroupRadioButtonClick();
+        radioButtonsPage.checkButtonTier2Click();
+
+        Assert.assertEquals("Sex : Female\n" + "Age group: 0 - 5",radioButtonsPage.getResultMessageTier2().getText());
+    }
+
+    @Test
+    public void nothingChckedT2() throws Exception {
+    	radioButtonsPage = new RadioButtonsDemo(webDriver);
+    	radioButtonsPage.openViaUrl(RadioButtonsDemo.getUrl());
+        radioButtonsPage.initializeElements(webDriver);
+        radioButtonsPage.checkButtonTier2Click();
+
+        Assert.assertEquals("Sex :\n" + "Age group:",radioButtonsPage.getResultMessageTier2().getText());
+    }
+
+    @Test
+    public void maleNothingCheckedT2() throws Exception {
+    	radioButtonsPage = new RadioButtonsDemo(webDriver);
+    	radioButtonsPage.openViaUrl(RadioButtonsDemo.getUrl());
+        radioButtonsPage.initializeElements(webDriver);;
+        radioButtonsPage.maleGroupRadioButtonClick();
+        radioButtonsPage.checkButtonTier2Click();
+
+        Assert.assertEquals("Sex : Male\n" + "Age group:",radioButtonsPage.getResultMessageTier2().getText());
+    }
+
+    @Test
+    public void nothingFiveFifteenCheckedT2() throws Exception {
+    	radioButtonsPage = new RadioButtonsDemo(webDriver);
+    	radioButtonsPage.openViaUrl(RadioButtonsDemo.getUrl());
+        radioButtonsPage.initializeElements(webDriver);
+        Thread.sleep(4000);
+        radioButtonsPage.fiveToFifeteenGroupRadioButtonClick();
+        Thread.sleep(4000);
+        radioButtonsPage.checkButtonTier2Click();
+        Thread.sleep(4000);
+        Assert.assertEquals("Sex :\n" + "Age group: 5 - 15",radioButtonsPage.getResultMessageTier2().getText());
+    }
 	
 	@After
 	public void setDown() throws Exception {
@@ -59,9 +124,5 @@ public class RadioButtonsTests {
 		webDriver.close();
 		webDriver.quit();
 	}
-	
-	
-	
-	
 	
 }
