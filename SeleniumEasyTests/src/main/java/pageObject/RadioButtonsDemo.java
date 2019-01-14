@@ -7,7 +7,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 public class RadioButtonsDemo extends BasePage {
 	//final static do innej klasy finalnej np. SeleniumSettings
 	//wydzielenie adresu url, dodawac tylko sufiks
-	private final static String Url = "https://www.seleniumeasy.com/test/basic-radiobutton-demo.html";
+	private final static String Url = mainUrl + "basic-radiobutton-demo.html";
 	//wywolanie klasy np. SeleniumSettings.MAIN_URL, tutaj akurat dla radio buttons demo
 	protected RemoteWebDriver webDriver;
 	

@@ -17,11 +17,18 @@ public class RadioButtonsTests {
 	//before i after mozna wydzielic do testow glownych
 	//testy dla kazdej strony maja byc w oddzielnych plikach
 	//ten plik ma byc tylko do testowania strony z radio buttonami
+	
+	public void settings() {
+		radioButtonsPage = new RadioButtonsDemo(webDriver);
+		radioButtonsPage.openViaUrl(RadioButtonsDemo.getUrl());
+		radioButtonsPage.initializeElements(webDriver);
+	}
+	
 	@Before
 	public void setUp() throws Exception {
 		System.setProperty("webdriver.chrome.driver", path);
 		webDriver = new ChromeDriver();
-        webDriver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		webDriver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		webDriver.manage().window().maximize();
 		Thread.sleep(3000);
 	}
@@ -29,9 +36,10 @@ public class RadioButtonsTests {
 	//Tests for Radio Button Demo section
 	@Test
 	public void maleTest() throws Exception {
-		radioButtonsPage = new RadioButtonsDemo(webDriver);
-		radioButtonsPage.openViaUrl(RadioButtonsDemo.getUrl());
-		radioButtonsPage.initializeElements(webDriver);
+//		radioButtonsPage = new RadioButtonsDemo(webDriver);
+//		radioButtonsPage.openViaUrl(RadioButtonsDemo.getUrl());
+//		radioButtonsPage.initializeElements(webDriver);
+		settings();
 		radioButtonsPage.maleRBClick();
 		radioButtonsPage.checkButtonTier1Click();
 		
@@ -40,9 +48,7 @@ public class RadioButtonsTests {
 	
 	@Test
 	public void femaleTest() throws Exception {
-		radioButtonsPage = new RadioButtonsDemo(webDriver);
-		radioButtonsPage.openViaUrl(RadioButtonsDemo.getUrl());
-		radioButtonsPage.initializeElements(webDriver);
+		settings();
 		radioButtonsPage.femaleRBClick();
 		radioButtonsPage.checkButtonTier1Click();
 		
@@ -51,9 +57,7 @@ public class RadioButtonsTests {
 	
     @Test
     public void nothingCheckedTest() throws Exception {
-    	radioButtonsPage = new RadioButtonsDemo(webDriver);
-    	radioButtonsPage.openViaUrl(RadioButtonsDemo.getUrl());
-    	radioButtonsPage.initializeElements(webDriver);
+    	settings();
     	radioButtonsPage.checkButtonTier1Click();
 
         Assert.assertEquals("Radio button is Not checked",radioButtonsPage.getResultMessageTier1().getText());
@@ -62,9 +66,7 @@ public class RadioButtonsTests {
 	//Tests for Group Radio Buttons Demo section
     @Test
     public void maleFifteenToFiftyTest() throws Exception {
-    	radioButtonsPage = new RadioButtonsDemo(webDriver);
-    	radioButtonsPage.openViaUrl(RadioButtonsDemo.getUrl());
-    	radioButtonsPage.initializeElements(webDriver);
+    	settings();
     	radioButtonsPage.maleGroupRadioButtonClick();
     	radioButtonsPage.fifeteenToFiftyGroupRadioButtonClick();
     	radioButtonsPage.checkButtonTier2Click();
@@ -74,9 +76,7 @@ public class RadioButtonsTests {
 
     @Test
     public void femaleZeroToFive() throws Exception {
-    	radioButtonsPage = new RadioButtonsDemo(webDriver);
-    	radioButtonsPage.openViaUrl(RadioButtonsDemo.getUrl());
-        radioButtonsPage.initializeElements(webDriver);
+    	settings();
         radioButtonsPage.femaleGroupRadioButtonClick();
         radioButtonsPage.zeroToFiveGroupRadioButtonClick();
         radioButtonsPage.checkButtonTier2Click();
@@ -86,9 +86,7 @@ public class RadioButtonsTests {
 
     @Test
     public void nothingChckedT2() throws Exception {
-    	radioButtonsPage = new RadioButtonsDemo(webDriver);
-    	radioButtonsPage.openViaUrl(RadioButtonsDemo.getUrl());
-        radioButtonsPage.initializeElements(webDriver);
+    	settings();
         radioButtonsPage.checkButtonTier2Click();
 
         Assert.assertEquals("Sex :\n" + "Age group:",radioButtonsPage.getResultMessageTier2().getText());
@@ -96,9 +94,7 @@ public class RadioButtonsTests {
 
     @Test
     public void maleNothingCheckedT2() throws Exception {
-    	radioButtonsPage = new RadioButtonsDemo(webDriver);
-    	radioButtonsPage.openViaUrl(RadioButtonsDemo.getUrl());
-        radioButtonsPage.initializeElements(webDriver);;
+    	settings();
         radioButtonsPage.maleGroupRadioButtonClick();
         radioButtonsPage.checkButtonTier2Click();
 
@@ -107,9 +103,7 @@ public class RadioButtonsTests {
 
     @Test
     public void nothingFiveFifteenCheckedT2() throws Exception {
-    	radioButtonsPage = new RadioButtonsDemo(webDriver);
-    	radioButtonsPage.openViaUrl(RadioButtonsDemo.getUrl());
-        radioButtonsPage.initializeElements(webDriver);
+    	settings();
         Thread.sleep(4000);
         radioButtonsPage.fiveToFifeteenGroupRadioButtonClick();
         Thread.sleep(4000);
