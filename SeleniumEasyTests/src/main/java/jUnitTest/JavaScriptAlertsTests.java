@@ -4,6 +4,7 @@ import java.util.concurrent.TimeUnit;
 import pageObject.*;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.Alert;
@@ -14,13 +15,27 @@ public class JavaScriptAlertsTests {
 	private RemoteWebDriver webDriver;
 	private JavaScriptAlerts JavaScriptAlertsPage;
 	private String path="C:\\Users\\Danny\\git\\SeleniumEasyTests\\SeleniumEasyTests\\files\\chromedriver.exe";
-	Alert alert = webDriver.switchTo().alert();
+//	Alert alert = webDriver.switchTo().alert();
 	
 	public void initializeSettings() {
 		JavaScriptAlertsPage = new JavaScriptAlerts(webDriver);
 		JavaScriptAlertsPage.openViaUrl(JavaScriptAlerts.getUrl());
 		JavaScriptAlertsPage.initializeElements(webDriver);
 	}
+	
+	public void acceptAlert() {
+		Alert alert = webDriver.switchTo().alert();
+		alert.accept();
+	}
+	
+	public void dismissAlert() {
+		Alert alert = webDriver.switchTo().alert();
+		alert.dismiss();
+	}
+	
+//	public void inputAlert(String inputText) {
+//		webDriver.switchTo().alert().sendKeys("inputText");
+//	}
 	
 	@Before
 	public void setUp() throws Exception {
@@ -32,17 +47,47 @@ public class JavaScriptAlertsTests {
 	}
 	
 	@Test
-	public void confirmPopupAlert() throws Exception {
+	public void confirmAlertBox() throws Exception {
 		initializeSettings();
 		JavaScriptAlertsPage.submitButtonSection1Click();
 		Thread.sleep(2000);
-		alert.accept();
+		acceptAlert();
 	}
 	
+	@Test
+	public void confirmPopupBox() throws Exception {
+		initializeSettings();
+		JavaScriptAlertsPage.submitButtonSection2Click();
+		Thread.sleep(2000);
+		acceptAlert();
+		
+		Assert.assertEquals("You pressed OK!",JavaScriptAlertsPage.getResultMessageSection2().getText());
+	}
+	
+	@Test
+	public void dismissPopupBox() throws Exception {
+		initializeSettings();
+		JavaScriptAlertsPage.submitButtonSection2Click();
+		Thread.sleep(2000);
+		dismissAlert();
+		
+		Assert.assertEquals("You pressed Cancel!",JavaScriptAlertsPage.getResultMessageSection2().getText());
+	}
+	
+	@Test
+	public void inputPopupBox() throws Exception {
+		initializeSettings();
+		JavaScriptAlertsPage.submitButtonSection3Click();
+		webDriver.switchTo().alert().sendKeys("Better than newbie");
+		Thread.sleep(2000);
+		acceptAlert();
+		
+		Assert.assertEquals("You have entered 'Better than newbie' !",JavaScriptAlertsPage.getResultMessageSection3().getText());
+	}
 	
 	@After
 	public void setDown() throws Exception {
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 		webDriver.close();
 		webDriver.quit();
 	}
