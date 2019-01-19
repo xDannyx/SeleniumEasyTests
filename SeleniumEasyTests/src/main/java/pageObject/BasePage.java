@@ -1,10 +1,10 @@
 package pageObject;
 
-import java.util.concurrent.TimeUnit;
-
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.openqa.selenium.chrome.ChromeDriver;
+//IMPORT JAVA.UTIL.CONCURRENT.TIMEUNIT;
+//
+//IMPORT ORG.JUNIT.AFTERCLASS;
+//IMPORT ORG.JUNIT.BEFORECLASS;
+//IMPORT ORG.OPENQA.SELENIUM.CHROME.CHROMEDRIVER;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class BasePage {
