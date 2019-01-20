@@ -15,7 +15,6 @@ public class JavaScriptAlertsTests {
 	private RemoteWebDriver webDriver;
 	private JavaScriptAlerts JavaScriptAlertsPage;
 	private String path="C:\\Users\\Danny\\git\\SeleniumEasyTests\\SeleniumEasyTests\\files\\chromedriver.exe";
-//	Alert alert = webDriver.switchTo().alert();
 	
 	public void initializeSettings() {
 		JavaScriptAlertsPage = new JavaScriptAlerts(webDriver);
@@ -32,10 +31,6 @@ public class JavaScriptAlertsTests {
 		Alert alert = webDriver.switchTo().alert();
 		alert.dismiss();
 	}
-	
-//	public void inputAlert(String inputText) {
-//		webDriver.switchTo().alert().sendKeys("inputText");
-//	}
 	
 	@Before
 	public void setUp() throws Exception {
