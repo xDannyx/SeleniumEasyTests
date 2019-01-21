@@ -1,24 +1,22 @@
 package jUnitTest;
-import pageObject.*;
-
 import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-public class AjaxFormSubmitTests {
+import pageObject.*;
+public class FileDownloadTests {
 	private RemoteWebDriver webDriver;
-	private AjaxFormSubmit AjaxFormSubmitPage;
+	private FileDownloadDemo FileDownloadPage;
 	private String path="C:\\Users\\Danny\\git\\SeleniumEasyTests\\SeleniumEasyTests\\files\\chromedriver.exe";
 	
 	public void initializeSettings() {
-		AjaxFormSubmitPage = new AjaxFormSubmit(webDriver);
-		AjaxFormSubmitPage.openViaUrl(AjaxFormSubmit.getUrl());
-		AjaxFormSubmitPage.initializeElements(webDriver);
+		FileDownloadPage = new FileDownloadDemo(webDriver);
+		FileDownloadPage.openViaUrl(FileDownloadDemo.getUrl());
+		FileDownloadPage.initializeElements(webDriver);
 	}
 	
 	@Before
@@ -31,16 +29,14 @@ public class AjaxFormSubmitTests {
 	}
 	
 	@Test
-	public void inputTextIntoBoxes() throws Exception {
+	public void enterDataAndDownloadFile() throws Exception {
 		initializeSettings();
-		AjaxFormSubmitPage.nameBoxClick();
-		AjaxFormSubmitPage.nameBoxInputText("Daniel");
-		AjaxFormSubmitPage.commentBoxClick();
-		AjaxFormSubmitPage.commentBoxInputText("Still a newbie.");
-		AjaxFormSubmitPage.submitButtonClick();
-		Thread.sleep(2000);
-		
-		Assert.assertEquals("Form submited Successfully!",AjaxFormSubmitPage.getResultMessage().getText());
+		//FileDownloadPage.enterDataFieldClick();
+		FileDownloadPage.enterDataFieldInputText("test");
+		Thread.sleep(1000);
+		FileDownloadPage.generateFileButtonClick();
+		Thread.sleep(1000);
+		FileDownloadPage.downloadFileButtonClick();
 	}
 	
 	@After
