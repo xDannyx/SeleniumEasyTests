@@ -27,9 +27,17 @@ private final static String Url = mainUrl + "table-records-filter-demo.html";
 		return this;
 	}
 	
+	public WebElement getGreenButton() {
+		return greenButton;
+	}
+	
 	public TableFilterDemo orangeButtonClick() {
 		orangeButton.click();
 		return this;
+	}
+	
+	public WebElement getOrangeButton() {
+		return orangeButton;
 	}
 	
 	public TableFilterDemo redButtonClick() {
@@ -37,11 +45,18 @@ private final static String Url = mainUrl + "table-records-filter-demo.html";
 		return this;
 	}
 	
+	public WebElement getRedButton() {
+		return redButton;
+	}
+	
 	public TableFilterDemo allColoursButtonClick() {
 		allColoursButton.click();
 		return this;
 	}
 	
+	public WebElement getAllColoursButton() {
+		return allColoursButton;
+	}
 	
 	public TableFilterDemo initializeElements(RemoteWebDriver webDriver) {
 		greenButton = webDriver.findElement(By.xpath("/html/body/div[2]/div/div[2]/section/div/div/div[2]/div[1]/div/button[1]"));

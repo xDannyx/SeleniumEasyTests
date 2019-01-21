@@ -4,12 +4,13 @@ import org.jbehave.core.annotations.AfterScenario;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+import org.jbehave.core.steps.Steps;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import pageObject.RadioButtonsDemo;
 
-public class RadioButtonsDemoSteps {
+public class RadioButtonsDemoSteps extends Steps {
 	RadioButtonsDemo RadioButtonsPage;
 	RemoteWebDriver webDriver;
 	

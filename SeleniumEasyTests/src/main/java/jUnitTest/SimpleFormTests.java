@@ -5,20 +5,19 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.Assert;
-//import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import pageObject.*;
 
 public class SimpleFormTests {
 	private RemoteWebDriver webDriver;
-	private SimpleFormDemo SimpleFormPage;
+	private SimpleFormDemo simpleFormPage;
 	private String path="C:\\Users\\Danny\\git\\SeleniumEasyTests\\SeleniumEasyTests\\files\\chromedriver.exe";
 	
 	public void initializeSettings() {
-		SimpleFormPage = new SimpleFormDemo(webDriver);
-		SimpleFormPage.openViaUrl(SimpleFormDemo.getUrl());
-		SimpleFormPage.initializeElements(webDriver);
+		simpleFormPage = new SimpleFormDemo(webDriver);
+		simpleFormPage.openViaUrl(SimpleFormDemo.getUrl());
+		simpleFormPage.initializeElements(webDriver);
 	}
 	
 	@Before
@@ -27,8 +26,6 @@ public class SimpleFormTests {
 		webDriver = new ChromeDriver();
 		webDriver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		webDriver.manage().window().maximize();
-//		JavascriptExecutor jse = (JavascriptExecutor)webDriver;
-//		jse.executeScript("scroll(0,3000)", "");
 		Thread.sleep(3000);
 	}
 	
@@ -36,44 +33,44 @@ public class SimpleFormTests {
 	@Test
 	public void singleInputTest() throws Exception {
 		initializeSettings();
-		SimpleFormPage.messageBoxClick();
-		SimpleFormPage.messageBoxInputText("Test message");
-		SimpleFormPage.showMessageButtonClick();
+		simpleFormPage.messageBoxClick();
+		simpleFormPage.messageBoxInputText("Test message");
+		simpleFormPage.showMessageButtonClick();
 		
-		Assert.assertEquals("Test message",SimpleFormPage.getResultMessage().getText());
+		Assert.assertEquals("Test message",simpleFormPage.getResultMessage().getText());
 	}
 	
 	//Tests Two Input Fields section
 	@Test
 	public void noInputTest() throws Exception {
 		initializeSettings();
-		SimpleFormPage.valueResultButtonClick();
+		simpleFormPage.valueResultButtonClick();
 		
-		Assert.assertEquals("NaN",SimpleFormPage.getValueResultMessage().getText());
+		Assert.assertEquals("NaN",simpleFormPage.getValueResultMessage().getText());
 	}
 	
 	@Test
 	public void twoNumberTest() throws Exception {
 		initializeSettings();
-		SimpleFormPage.valueFieldAClick();
-		SimpleFormPage.valueFieldAInput("3");
-		SimpleFormPage.valueFieldBClick();
-		SimpleFormPage.valueFieldBInput("4");
-		SimpleFormPage.valueResultButtonClick();
+		simpleFormPage.valueFieldAClick();
+		simpleFormPage.valueFieldAInput("3");
+		simpleFormPage.valueFieldBClick();
+		simpleFormPage.valueFieldBInput("4");
+		simpleFormPage.valueResultButtonClick();
 		
-		Assert.assertEquals("7",SimpleFormPage.getValueResultMessage().getText());
+		Assert.assertEquals("7",simpleFormPage.getValueResultMessage().getText());
 	}
 	
 	@Test
 	public void oneNumberTest()throws Exception {
 		initializeSettings();
-		SimpleFormPage.valueFieldAClick();
-		SimpleFormPage.valueFieldAInput("123");
-		SimpleFormPage.valueFieldBClick();
-		SimpleFormPage.valueFieldBInput("test");
-		SimpleFormPage.valueResultButtonClick();
+		simpleFormPage.valueFieldAClick();
+		simpleFormPage.valueFieldAInput("123");
+		simpleFormPage.valueFieldBClick();
+		simpleFormPage.valueFieldBInput("test");
+		simpleFormPage.valueResultButtonClick();
 		
-		Assert.assertEquals("NaN",SimpleFormPage.getValueResultMessage().getText());
+		Assert.assertEquals("NaN",simpleFormPage.getValueResultMessage().getText());
 	}
 	
 	@After

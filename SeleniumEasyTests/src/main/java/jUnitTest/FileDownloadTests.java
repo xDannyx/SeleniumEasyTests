@@ -2,6 +2,7 @@ package jUnitTest;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -10,13 +11,13 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import pageObject.*;
 public class FileDownloadTests {
 	private RemoteWebDriver webDriver;
-	private FileDownloadDemo FileDownloadPage;
+	private FileDownloadDemo fileDownloadPage;
 	private String path="C:\\Users\\Danny\\git\\SeleniumEasyTests\\SeleniumEasyTests\\files\\chromedriver.exe";
 	
 	public void initializeSettings() {
-		FileDownloadPage = new FileDownloadDemo(webDriver);
-		FileDownloadPage.openViaUrl(FileDownloadDemo.getUrl());
-		FileDownloadPage.initializeElements(webDriver);
+		fileDownloadPage = new FileDownloadDemo(webDriver);
+		fileDownloadPage.openViaUrl(FileDownloadDemo.getUrl());
+		fileDownloadPage.initializeElements(webDriver);
 	}
 	
 	@Before
@@ -31,12 +32,13 @@ public class FileDownloadTests {
 	@Test
 	public void enterDataAndDownloadFile() throws Exception {
 		initializeSettings();
-		//FileDownloadPage.enterDataFieldClick();
-		FileDownloadPage.enterDataFieldInputText("test");
+		fileDownloadPage.enterDataFieldInputText("test");
 		Thread.sleep(1000);
-		FileDownloadPage.generateFileButtonClick();
+		fileDownloadPage.generateFileButtonClick();
 		Thread.sleep(1000);
-		FileDownloadPage.downloadFileButtonClick();
+		fileDownloadPage.downloadFileButtonClick();
+		
+		Assert.assertTrue(fileDownloadPage.getDownloadFileButton().isDisplayed());
 	}
 	
 	@After

@@ -21,10 +21,6 @@ public class FileDownloadDemo extends BasePage {
 	private WebElement downloadFileButton;
 	
 	//methods for File Download section
-	public FileDownloadDemo enterDataFieldClick() {
-		enterDataField.click();
-		return this;
-	}
 	
 	public FileDownloadDemo enterDataFieldInputText(String enterData) {
 		enterDataField.sendKeys(enterData);
@@ -39,6 +35,10 @@ public class FileDownloadDemo extends BasePage {
 	public FileDownloadDemo downloadFileButtonClick() {
 		downloadFileButton.click();
 		return this;
+	}
+	
+	public WebElement getDownloadFileButton() {
+		return downloadFileButton;
 	}
 	
 	public FileDownloadDemo initializeElements(RemoteWebDriver webDriver) {

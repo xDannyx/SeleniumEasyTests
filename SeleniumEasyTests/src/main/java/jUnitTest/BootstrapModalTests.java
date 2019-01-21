@@ -11,13 +11,13 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class BootstrapModalTests {
 	private RemoteWebDriver webDriver;
-	private BootstrapModal BootstrapPage;
+	private BootstrapModal bootstrapPage;
 	private String path="C:\\Users\\Danny\\git\\SeleniumEasyTests\\SeleniumEasyTests\\files\\chromedriver.exe";
 	
 	public void initializeSettings() {
-		BootstrapPage = new BootstrapModal(webDriver);
-		BootstrapPage.openViaUrl(BootstrapModal.getUrl());
-		BootstrapPage.initializeElements(webDriver);
+		bootstrapPage = new BootstrapModal(webDriver);
+		bootstrapPage.openViaUrl(BootstrapModal.getUrl());
+		bootstrapPage.initializeElements(webDriver);
 	}
 	
 	@Before
@@ -32,55 +32,55 @@ public class BootstrapModalTests {
 	@Test
 	public void saveFirstModal() throws Exception {
 		initializeSettings();
-		BootstrapPage.launchSection1Click();
+		bootstrapPage.launchSection1Click();
 		Thread.sleep(2000);
-		BootstrapPage.saveChangesSection1Click();
+		bootstrapPage.saveChangesSection1Click();
 	}
 	
 	@Test
 	public void closeFirstModal() throws Exception {
 		initializeSettings();
-		BootstrapPage.launchSection1Click();
+		bootstrapPage.launchSection1Click();
 		Thread.sleep(2000);
-		BootstrapPage.closeSection1Click();
+		bootstrapPage.closeSection1Click();
 	}
 	
 	@Test
 	public void saveSecondModal() throws Exception {
 		initializeSettings();
-		BootstrapPage.launchSection2Click();
+		bootstrapPage.launchSection2Click();
 		Thread.sleep(2000);
-		BootstrapPage.saveChangesSection2Click();
+		bootstrapPage.saveChangesSection2Click();
 	}
 	
 	@Test
 	public void closeSecondModal() throws Exception {
 		initializeSettings();
-		BootstrapPage.launchSection2Click();
+		bootstrapPage.launchSection2Click();
 		Thread.sleep(2000);
-		BootstrapPage.closeSection2Click();
+		bootstrapPage.closeSection2Click();
 	}
 	
 	@Test
 	public void saveThirdModal() throws Exception {
 		initializeSettings();
-		BootstrapPage.launchSection2Click();
+		bootstrapPage.launchSection2Click();
 		Thread.sleep(2000);
-		BootstrapPage.launchSection3Click();
+		bootstrapPage.launchSection3Click();
 		Thread.sleep(2000);
-		BootstrapPage.saveChangesSection3Click();
+		bootstrapPage.saveChangesSection3Click();
 	}
 	
 	@Test
 	public void closeThirdModal() throws Exception {
 		initializeSettings();
-		BootstrapPage.launchSection2Click();
+		bootstrapPage.launchSection2Click();
 		Thread.sleep(2000);
-		BootstrapPage.launchSection3Click();
+		bootstrapPage.launchSection3Click();
 		Thread.sleep(2000);
-		BootstrapPage.closeSection3Click();
+		bootstrapPage.closeSection3Click();
 		Thread.sleep(2000);
-		BootstrapPage.closeSection2Click();
+		bootstrapPage.closeSection2Click();
 	}
 	
 	@After

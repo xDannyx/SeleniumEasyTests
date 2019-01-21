@@ -12,13 +12,13 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 public class AjaxFormSubmitTests {
 	private RemoteWebDriver webDriver;
-	private AjaxFormSubmit AjaxFormSubmitPage;
+	private AjaxFormSubmit ajaxFormSubmitPage;
 	private String path="C:\\Users\\Danny\\git\\SeleniumEasyTests\\SeleniumEasyTests\\files\\chromedriver.exe";
 	
 	public void initializeSettings() {
-		AjaxFormSubmitPage = new AjaxFormSubmit(webDriver);
-		AjaxFormSubmitPage.openViaUrl(AjaxFormSubmit.getUrl());
-		AjaxFormSubmitPage.initializeElements(webDriver);
+		ajaxFormSubmitPage = new AjaxFormSubmit(webDriver);
+		ajaxFormSubmitPage.openViaUrl(AjaxFormSubmit.getUrl());
+		ajaxFormSubmitPage.initializeElements(webDriver);
 	}
 	
 	@Before
@@ -33,14 +33,14 @@ public class AjaxFormSubmitTests {
 	@Test
 	public void inputTextIntoBoxes() throws Exception {
 		initializeSettings();
-		AjaxFormSubmitPage.nameBoxClick();
-		AjaxFormSubmitPage.nameBoxInputText("Daniel");
-		AjaxFormSubmitPage.commentBoxClick();
-		AjaxFormSubmitPage.commentBoxInputText("Still a newbie.");
-		AjaxFormSubmitPage.submitButtonClick();
+		ajaxFormSubmitPage.nameBoxClick();
+		ajaxFormSubmitPage.nameBoxInputText("Daniel");
+		ajaxFormSubmitPage.commentBoxClick();
+		ajaxFormSubmitPage.commentBoxInputText("Still a newbie.");
+		ajaxFormSubmitPage.submitButtonClick();
 		Thread.sleep(2000);
 		
-		Assert.assertEquals("Form submited Successfully!",AjaxFormSubmitPage.getResultMessage().getText());
+		Assert.assertEquals("Form submited Successfully!",ajaxFormSubmitPage.getResultMessage().getText());
 	}
 	
 	@After

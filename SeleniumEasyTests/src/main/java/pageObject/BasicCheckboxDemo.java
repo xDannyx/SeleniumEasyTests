@@ -32,6 +32,10 @@ public class BasicCheckboxDemo extends BasePage {
 		return this;
 	}
 	
+	public WebElement getSingleCheckbox() {
+		return singleCheckbox;
+	}
+	
 	public WebElement getResultMessage() {
 		return resultMessage;
 	}
@@ -42,9 +46,17 @@ public class BasicCheckboxDemo extends BasePage {
 		return this;
 	}
 	
+	public WebElement getCheckOption1() {
+		return checkOption1;
+	}
+	
 	public BasicCheckboxDemo checkOption2Click() {
 		checkOption2.click();
 		return this;
+	}
+	
+	public WebElement getCheckOption2() {
+		return checkOption2;
 	}
 	
 	public BasicCheckboxDemo checkOption3Click() {
@@ -52,9 +64,17 @@ public class BasicCheckboxDemo extends BasePage {
 		return this;
 	}
 	
+	public WebElement getCheckOption3() {
+		return checkOption3;
+	}
+	
 	public BasicCheckboxDemo checkOption4Click() {
 		checkOption4.click();
 		return this;
+	}
+	
+	public WebElement getCheckOption4() {
+		return checkOption4;
 	}
 	
 	public BasicCheckboxDemo checkButtonClick() {

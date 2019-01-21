@@ -10,13 +10,13 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import pageObject.*;
 public class TableFilterTests {
 	private RemoteWebDriver webDriver;
-	private TableFilterDemo TableFilterPage;
+	private TableFilterDemo tableFilterPage;
 	private String path="C:\\Users\\Danny\\git\\SeleniumEasyTests\\SeleniumEasyTests\\files\\chromedriver.exe";
 	
 	public void initializeSettings() {
-		TableFilterPage = new TableFilterDemo(webDriver);
-		TableFilterPage.openViaUrl(TableFilterDemo.getUrl());
-		TableFilterPage.initializeElements(webDriver);
+		tableFilterPage = new TableFilterDemo(webDriver);
+		tableFilterPage.openViaUrl(TableFilterDemo.getUrl());
+		tableFilterPage.initializeElements(webDriver);
 	}
 	
 	@Before
@@ -31,32 +31,26 @@ public class TableFilterTests {
 	@Test
 	public void filterGreenThenAllElements() throws Exception {
 		initializeSettings();
-		TableFilterPage.greenButtonClick();
+		tableFilterPage.greenButtonClick();
 		Thread.sleep(1000);
-		TableFilterPage.allColoursButtonClick();
+		tableFilterPage.allColoursButtonClick();
 	}
 	
 	@Test
 	public void filterRedThenAllElements() throws Exception {
 		initializeSettings();
-		TableFilterPage.redButtonClick();
+		tableFilterPage.redButtonClick();
 		Thread.sleep(1000);
-		TableFilterPage.allColoursButtonClick();
+		tableFilterPage.allColoursButtonClick();
 	}
 	
 	@Test
 	public void filterOrangeThenAllElements() throws Exception {
 		initializeSettings();
-		TableFilterPage.orangeButtonClick();
+		tableFilterPage.orangeButtonClick();
 		Thread.sleep(1000);
-		TableFilterPage.allColoursButtonClick();
+		tableFilterPage.allColoursButtonClick();
 	}
-	
-//	@Test
-//	public void filterAllThenAllElements() throws Exception {
-//		initializeSettings();
-//		TableFilterPage.allColoursButtonClick();
-//	}
 	
 	@After
 	public void setDown() throws Exception {

@@ -10,14 +10,14 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import pageObject.*;
 public class WindowPopupTests {
 	private RemoteWebDriver webDriver;
-	private WindowPopupExample WindowPopupPage;
+	private WindowPopupExample windowPopupPage;
 	private String path="C:\\Users\\Danny\\git\\SeleniumEasyTests\\SeleniumEasyTests\\files\\chromedriver.exe";
 	//String winHandleBefore = webDriver.getWindowHandle();
 	
 	public void initializeSettings() {
-		WindowPopupPage = new WindowPopupExample(webDriver);
-		WindowPopupPage.openViaUrl(WindowPopupExample.getUrl());
-		WindowPopupPage.initializeElements(webDriver);
+		windowPopupPage = new WindowPopupExample(webDriver);
+		windowPopupPage.openViaUrl(WindowPopupExample.getUrl());
+		windowPopupPage.initializeElements(webDriver);
 	}
 	
 	@Before
@@ -33,7 +33,7 @@ public class WindowPopupTests {
 	public void openTwitterThenClose() throws Exception {
 		String winHandleBefore = webDriver.getWindowHandle();
 		initializeSettings();
-		WindowPopupPage.followTwitterButtonClick();
+		windowPopupPage.followTwitterButtonClick();
 		for(String winHandle : webDriver.getWindowHandles()){
 			webDriver.switchTo().window(winHandle);
 		}
@@ -46,7 +46,7 @@ public class WindowPopupTests {
 	public void openFacebookThenClose() throws Exception {
 		String winHandleBefore = webDriver.getWindowHandle();
 		initializeSettings();
-		WindowPopupPage.likeFacebookButtonClick();
+		windowPopupPage.likeFacebookButtonClick();
 		for(String winHandle : webDriver.getWindowHandles()){
 			webDriver.switchTo().window(winHandle);
 		}

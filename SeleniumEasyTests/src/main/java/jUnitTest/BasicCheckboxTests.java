@@ -12,13 +12,13 @@ import pageObject.*;
 
 public class BasicCheckboxTests {
 	private RemoteWebDriver webDriver;
-	private BasicCheckboxDemo CheckboxPage;
+	private BasicCheckboxDemo checkboxPage;
 	private String path="C:\\Users\\Danny\\git\\SeleniumEasyTests\\SeleniumEasyTests\\files\\chromedriver.exe";
 	
 	public void initializeSettings() {
-		CheckboxPage = new BasicCheckboxDemo(webDriver);
-		CheckboxPage.openViaUrl(BasicCheckboxDemo.getUrl());
-		CheckboxPage.initializeElements(webDriver);
+		checkboxPage = new BasicCheckboxDemo(webDriver);
+		checkboxPage.openViaUrl(BasicCheckboxDemo.getUrl());
+		checkboxPage.initializeElements(webDriver);
 	}
 	
 	@Before
@@ -33,33 +33,41 @@ public class BasicCheckboxTests {
 	@Test
 	public void checkSingleBox() throws Exception {
 		initializeSettings();
-		CheckboxPage.singleCheckboxClick();
+		checkboxPage.singleCheckboxClick();
 		
-		Assert.assertEquals("Success - Check box is checked",CheckboxPage.getResultMessage().getText());
+		Assert.assertTrue(checkboxPage.getSingleCheckbox().isSelected());
+		Assert.assertEquals("Success - Check box is checked",checkboxPage.getResultMessage().getText());
 	}
 	
 	@Test
 	public void checkThenUncheckAll() throws Exception {
 		initializeSettings();
-		CheckboxPage.checkButtonClick();
+		checkboxPage.checkButtonClick();
 		Thread.sleep(1000);
-		CheckboxPage.checkButtonClick();
+		checkboxPage.checkButtonClick();
+		
+		Assert.assertFalse(checkboxPage.getCheckOption1().isSelected());
+		Assert.assertFalse(checkboxPage.getCheckOption2().isSelected());
+		Assert.assertFalse(checkboxPage.getCheckOption3().isSelected());
+		Assert.assertFalse(checkboxPage.getCheckOption4().isSelected());
 	}
 	
 	@Test
 	public void checkEveryoneUncheckCheckAll() throws Exception {
 		initializeSettings();
-		CheckboxPage.checkOption1Click();
+		checkboxPage.checkOption1Click();
 		Thread.sleep(1000);
-		CheckboxPage.checkOption2Click();
+		checkboxPage.checkOption2Click();
 		Thread.sleep(1000);
-		CheckboxPage.checkOption3Click();
+		checkboxPage.checkOption3Click();
 		Thread.sleep(1000);
-		CheckboxPage.checkOption4Click();
+		checkboxPage.checkOption4Click();
 		Thread.sleep(1000);
-		CheckboxPage.checkButtonClick();
-		Thread.sleep(1000);
-		CheckboxPage.checkButtonClick();
+		
+		Assert.assertTrue(checkboxPage.getCheckOption1().isSelected());
+		Assert.assertTrue(checkboxPage.getCheckOption2().isSelected());
+		Assert.assertTrue(checkboxPage.getCheckOption3().isSelected());
+		Assert.assertTrue(checkboxPage.getCheckOption4().isSelected());
 	}
 	
 	@After
